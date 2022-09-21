@@ -29,12 +29,8 @@ public class CustomWebApplicationServer {
             while ((clientSocket = serverSocket.accept()) != null) {
                 logger.info("[CustomWebApplicationServer] client connected!");
 
-                /**
-                 * step1 - 사용자 요청을 메인 Thread 가 처리하도록 한다.
-                 */
-
-                /**
-                 * step2 - 사용자 요청이 들어올 때마다 Thread 를 새로 생성해서 사용자 요청을 처리하도록 한다.
+                /*
+                  step2 - 사용자 요청이 들어올 때마다 Thread 를 새로 생성해서 사용자 요청을 처리하도록 한다.
                  */
 
                 try(InputStream in = clientSocket.getInputStream(); OutputStream out = clientSocket.getOutputStream()) {
@@ -57,6 +53,9 @@ public class CustomWebApplicationServer {
                         HttpResponse response = new HttpResponse(dos);
                         response.response200Header("application/json", body.length);
                         response.responseBody(body);
+
+                        //git test
+                        // hahaha
                     }
                 }
             }
