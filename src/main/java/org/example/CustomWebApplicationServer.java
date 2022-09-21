@@ -53,9 +53,6 @@ public class CustomWebApplicationServer {
                         HttpResponse response = new HttpResponse(dos);
                         response.response200Header("application/json", body.length);
                         response.responseBody(body);
-
-                        //git test
-                        // hahaha
                     }
                 }
             }
