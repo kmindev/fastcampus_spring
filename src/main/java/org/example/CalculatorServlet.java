@@ -16,15 +16,12 @@ import java.io.PrintWriter;
  */
 @WebServlet("/calculate")
 
-public class CalculatorServlet implements Servlet {
+/**
+ * GenericServlet : 추상클래스
+ * 필요한 것 만 오버라이드해서 사용하면 됨
+ */
+public class CalculatorServlet extends GenericServlet {
     private static final Logger logger = LoggerFactory.getLogger(CalculatorServlet.class);
-    private ServletConfig servletConfig;
-
-    @Override
-    public void init(ServletConfig servletConfig) throws ServletException {
-        logger.info("init");   // 서블릿이 최초로 호출되었을 때 서블릿 컨테이너가 자동 실행, 서블릿 객체가 생성된 후, 한번만 실행(초기화 작업 담당)
-        this.servletConfig = servletConfig;
-    }
 
     @Override
     public void service(ServletRequest request, ServletResponse response) throws ServletException, IOException {
@@ -37,20 +34,6 @@ public class CalculatorServlet implements Servlet {
 
         PrintWriter writer = response.getWriter();
         writer.println(result);
-    }
 
-    @Override
-    public void destroy() {
-        // resource release : 자원 해제
-    }
-
-    @Override
-    public ServletConfig getServletConfig() {
-        return this.servletConfig;
-    }
-
-    @Override
-    public String getServletInfo() {
-        return null;
     }
 }
