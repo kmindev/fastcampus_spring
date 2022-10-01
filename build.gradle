@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+
+    // 가벼운 용량과 빠른 속도를 가지는 JDBC의 커넥션 풀 프레임워크
+    implementation('com.zaxxer:HikariCP:5.0.1')
+    // 스프링 JDBC
+    implementation('org.springframework:spring-jdbc:5.3.22')
+
+    /**
+     * H2DB
+     * 자바 기반의 오픈소스 관계형 데이터베이스 관리 시스템(RDBMS)
+     * 서버 모드와 임베디드 모드의 인메모리 DB 기능 지원
+     * 설치과정 없고 저용량
+     * SQL 문법 대부분 지원
+     * 개발 단계의 테스트 DB로 많이 사용
+     */
+    testImplementation('com.h2database:h2:2.1.214')
+
+    // logback
+    implementation('ch.qos.logback:logback-classic:1.2.11')
+
+    testImplementation('org.assertj:assertj-core:3.22.0')
+}
+
+test {
+    useJUnitPlatform()
+}
